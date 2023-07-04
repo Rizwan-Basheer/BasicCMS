@@ -1,0 +1,1 @@
+<img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="logo-dark" height="22">
