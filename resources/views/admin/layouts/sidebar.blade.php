@@ -54,22 +54,11 @@
 
                                     <li>
                                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                            <i class="ri-layout-3-line"></i>
-                                            <span>Layouts</span>
+                                            <i class="ri-mail-send-line"></i>
+                                            <span>About Page Setup</span>
                                         </a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li>
-                                                <a href="javascript: void(0);" class="has-arrow">Vertical</a>
-                                                <ul class="sub-menu" aria-expanded="true">
-                                                    <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                                                    <li><a href="layouts-compact-sidebar.html">Compact Sidebar</a></li>
-                                                    <li><a href="layouts-icon-sidebar.html">Icon Sidebar</a></li>
-                                                    <li><a href="layouts-boxed.html">Boxed Layout</a></li>
-                                                    <li><a href="layouts-preloader.html">Preloader</a></li>
-                                                    <li><a href="layouts-colored-sidebar.html">Colored Sidebar</a></li>
-                                                </ul>
-                                            </li>
-
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            <li><a href="{{ route('about.page') }}">About Page</a></li>
                                         </ul>
                                     </li>
 
