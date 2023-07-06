@@ -32,7 +32,7 @@ class PortfolioController extends Controller
         ], [
 
             'portfolio_name.required' => 'Portfolio Name is Required',
-            'portfolio_title.required' => 'Portfolio Titile is Required',
+            'portfolio_title.required' => 'Portfolio Title is Required',
         ]);
 
         $image = $request->file('portfolio_image');
@@ -61,7 +61,7 @@ class PortfolioController extends Controller
     {
 
         $portfolio = Portfolio::findOrFail($id);
-        return view('admin.protfolio.protfolio_edit', compact('portfolio'));
+        return view('admin.Portfolio.Portfolio_edit', compact('portfolio'));
     } // End Method
 
 
