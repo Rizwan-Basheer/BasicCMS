@@ -30,7 +30,10 @@
                         <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Categories</th>
+                            <th>Blog Category</th>
+                            <th>Blog title</th>
+                            <th>Blog Image</th>
+                            <th>Blog Tags</th>
                             <th>Action</th>
 
                         </thead>
@@ -38,15 +41,18 @@
 
                         <tbody>
                         	@php($i = 1)
-                        	@foreach($all_cate as $item)
+                        	@foreach($all_blog as $item)
                         <tr>
                             <td> {{ $i++}} </td>
-                            <td> <p>{{$item->blog_category}}</p> </td>
+                            <td> <p>{{$item['category']['blog_category']}}</p> </td>
+                            <td> <p>{{$item->blog_title}}</p> </td>
+                            <td> <img src="{{asset($item->blog_image)}}" alt="Blog_image{{$i++}}" style="width: 60px; height: 50px;">  </td>
+                            <td> <p>{{$item->blog_tags}}</p> </td>
 
                             <td>
-                                <a href="{{ route('edit.blog.category',$item->id) }}" class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i> </a>
+                                <a href="{{ route('edit.blog',$item->id) }}" class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i> </a>
 
-                                <a href="{{ route('delete.blog.category',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
+                                <a href="{{ route('delete.blog',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
 
                             </td>
 

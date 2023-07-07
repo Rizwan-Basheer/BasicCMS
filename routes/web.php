@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\HomeSliderController;
@@ -23,7 +24,7 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
-Route::controller(AdminController::class)->group(function () {
+Route::controller(AdminController::class)->middleware('auth')->group(function () {
     // Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'Profile')->name('admin.profile');
     Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
@@ -32,12 +33,12 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
 });
 // Home Slide All Route
-Route::controller(HomeSliderController::class)->group(function () {
+Route::controller(HomeSliderController::class)->middleware('auth')->group(function () {
     Route::get('/home/slide', 'HomeSlider')->name('home.slide');
     Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
 });
 // About Page All Route
-Route::controller(AboutController::class)->group(function () {
+Route::controller(AboutController::class)->middleware('auth')->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/about', 'UpdateAbout')->name('update.about');
     Route::get('/about', 'HomeAbout')->name('home.about');
@@ -50,7 +51,7 @@ Route::controller(AboutController::class)->group(function () {
 });
 
 // Porfolio All Route
-Route::controller(PortfolioController::class)->group(function () {
+Route::controller(PortfolioController::class)->middleware('auth')->group(function () {
     Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
     Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
     Route::post('/store/portfolio', 'StorePortfolio')->name('store.protfolio');
@@ -61,13 +62,23 @@ Route::controller(PortfolioController::class)->group(function () {
 });
 
 // Blog Categories All Route
-Route::controller(BlogCategoryController::class)->group(function () {
+Route::controller(BlogCategoryController::class)->middleware('auth')->group(function () {
     Route::get('/all/blog/categories', 'AllBlogCategory')->name('all.blog.categories');
     Route::get('/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
     Route::POST('/store/newcategory', 'StoreNewCategory')->name('store.newcategory');
     Route::get('/edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
     Route::POST('/update/blog/category/', 'UpdateBlogCategory')->name('update.blogCategory');
     Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+});
+
+// Blogs All Route
+Route::controller(BlogController::class)->middleware('auth')->group(function () {
+    Route::get('/all/blog', 'AllBlog')->name('all.blog');
+    Route::get('/add/blog', 'AddBlog')->name('add.blog');
+    Route::POST('/store/blog', 'StoreBlog')->name('store.blog');
+    Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
+    Route::POST('/update/blog/', 'UpdateBlog')->name('update.blog');
+    Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
 });
 Route::get('/dashboard', function () {
     return view('admin.index');
